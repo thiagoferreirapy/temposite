@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style2.css')}}">
+    <title>Tempo local</title>
+</head>
+<body>
+    <h1>VEJA O TEMPO EM SUA REGIÃO</h1>
+    <main>
+        
+        <section class="pesquisa_cidade">
+            
+            <form action="/inform_tempo">
+                
+                <input type="text" name="procura_cidade" id="procura_cidade" placeholder="Cidade " required>
+                <input type="text" name="procura_estado" id="procura_estado" placeholder="Estado" required>
+            
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <p>2020 - Thiago Silva</p>
+            <div class="links">
+                <a href=""><i class="fa-brands fa-square-github"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </section>
+        <section class="container_informações">
+            <div class="nome_cidade_estado">
+                <p>{{nome_cidade}}</p>
+                <h3>{{nome_estado}}</h3>
+            </div>
+            <div class="container_tempo">
+                <div class="tempo">
+                    <div class="ajusta_tempo_display">
+                        <div class="informação_tempo">
+                            <div class="tempo_min">
+                                <p>min</p>
+                                <h3> {{temperatura_min}} °C</h3>
+                            </div>
+                            <div  class="tempo_max">
+                                <p>max</p>
+                                <h3> {{temperatura_max}} °C</h3>
+                            </div>
+                            
+                            <p id="descricao">{{descricao}}</p>
+                        </div>
+                        
+                        <p id="img_tempo">&#x{{simbolo}}</p>
+                    </div>
+                    
+
+                </div>
+                <div class="tempo">
+                    
+                    <div class="informação_umidade">
+                        <i class="fa-solid fa-droplet"></i>
+                        <p>umidade: {{umidade}}%</p>
+                    </div>
+                    <div class="informação_vento">
+                        <i class="fa-solid fa-wind"></i>
+                        <p>vento: {{vento}} km/h</p>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<script src="https://kit.fontawesome.com/dc37c7fe1c.js" crossorigin="anonymous"></script>
+</html>
