@@ -9,8 +9,6 @@ def localiza():
             link = f'https://viacep.com.br/ws/{cep}/json/'
 
             requisicao = requests.get(link)
-            print(requisicao.json())
-
             dicionario = requisicao.json()
 
 
@@ -19,19 +17,13 @@ def localiza():
             bairro = dicionario['bairro']
             localidade = dicionario['localidade']
             uf = dicionario['uf']
-            
-            print(f'''
-            {cep}
-            {logradouro}
-            {bairro}
-            {localidade} - {uf}''')
         
-            return localidade, uf
+            return {"status_code": 200, "menssage": "Cep válido", "loalidade": localidade, "estado": uf}
         except:
-            print('Desculpa insira o cep novamente!!!')
+            return {"status_code": 500, "menssage": "Erro interno do servidor"}
     elif cep.isalpha() == True or cep.isalnum() == True:
-        print('cep inválido tente novamnete')
+        return {"error_status": 400, "menssage": "Cep inválido"}
     else:
-        print('insira um cep válido!!!')
+        return {"status_code": 400, "menssage": "Cep inválido"}
 
 localiza()
